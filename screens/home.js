@@ -20,7 +20,7 @@ export default Home = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    // backgroundColor: '#F45678',
+    backgroundColor: '#F45678',
     alignItems: 'center',
     justifyContent: 'center',
   },
