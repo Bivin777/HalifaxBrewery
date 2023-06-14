@@ -9,11 +9,11 @@ export default Home = ({ navigation }) => {
         <Text style={styles.heading}>Home</Text>
         <StatusBar style='auto' />
       </View>
-      {/* <Button
+      <Button
         title='Go to Add Page'
         onPress={() => navigation.navigate('add')}
         // onPress={() => navigation.navigate('add', { name: 'Danny' })}
-      /> */}
+      />
     </View>
   );
 };
