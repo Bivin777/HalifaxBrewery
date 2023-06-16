@@ -8,17 +8,15 @@ import Home from "./screens/home.js";
 import Add from "./screens/add.js";
 import Update from "./screens/update.js";
 import Retrieve from "./screens/retrieve.js";
+import Login from "./screens/login.js";
 // import Container from './screens/container.js';
 // import Routing from './routes/routeMap.js';
 export default function App() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="home"
-          component={Home}
-          options={{ title: "Welcome" }}
-        />
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="login" component={Login} />
+        <Stack.Screen name="home" component={Home} />
         <Stack.Screen name="add" component={Add} />
         <Stack.Screen name="update" component={Update} />
         <Stack.Screen name="retrieve" component={Retrieve} />
@@ -28,11 +26,11 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#F45678",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: "##EDF1F1",
+//     alignItems: "left",
+//     justifyContent: "center",
+//   },
+// });
