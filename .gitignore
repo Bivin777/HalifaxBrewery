@@ -11,6 +11,7 @@ npm-debug.*
 web-build/
 backend/env
 backend/__pycache__
+Both_workspaces_config_for_VScode.code-workspace
 
 # macOS
 .DS_Store

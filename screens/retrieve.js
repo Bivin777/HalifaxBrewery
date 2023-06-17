@@ -1,5 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -10,15 +10,15 @@ import {
   TextInput,
   FlatList,
   ActivityIndicator,
-} from 'react-native';
+} from "react-native";
 // import React, { Component } from 'react';
 
-export default Retrieve = ({ navigation }) => {
+export default Retrieve = ({}) => {
   const [products, setproducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const goForFetch = () => {
-    fetch('https://atlanticbreweries.herokuapp.com/retrieve-data')
+    fetch("https://atlanticbreweries.herokuapp.com/retrieve-data")
       .then((response) => response.json())
       .then((responseJson) => {
         // console.log('getting data from fetch', responseJson);
@@ -30,28 +30,26 @@ export default Retrieve = ({ navigation }) => {
   };
   return (
     <ScrollView>
-      <View style={{ alignItems: 'center', flex: 1 }}>
+      <View style={{ alignItems: "center", flex: 1 }}>
         {/* <Text>Some more text</Text> */}
         <Image
           source={{
-            uri: 'https://banner2.cleanpng.com/20180309/ajq/kisspng-beer-champagne-wine-alcoholic-drink-drinking-man-5aa29afd1db550.3834319415206059491217.jpg',
+            uri: "https://banner2.cleanpng.com/20180309/ajq/kisspng-beer-champagne-wine-alcoholic-drink-drinking-man-5aa29afd1db550.3834319415206059491217.jpg",
           }}
           style={{ width: 200, height: 200 }}
         />
-        <Text> {'\n'}</Text>
+        <Text> {"\n"}</Text>
         {isLoading && (
           <View style={styles.loader}>
-            <ActivityIndicator size='large' color='#0c9' />
+            <ActivityIndicator size="large" color="#0c9" />
           </View>
         )}
-        {isLoading && (
-          <Text>Data is being retrieved, please wait!</Text>
-        )}
+        {isLoading && <Text>Data is being retrieved, please wait!</Text>}
       </View>
       <View>
         {products.map((prod, index) => (
           <View key={prod._id}>
-            <Text> {'\n'}</Text>
+            <Text> {"\n"}</Text>
             <Text>{prod.brand}</Text>
             <Text>{prod.facings}</Text>
             <Text>{prod.logDate}</Text>
@@ -70,8 +68,8 @@ export default Retrieve = ({ navigation }) => {
         }}
         defaultValue='You can type in me'
       /> */}
-      <Text> {'\n'}</Text>
-      <Button title={'Click using Fetch'} onPress={goForFetch} color='green' />
+      <Text> {"\n"}</Text>
+      <Button title={"Click using Fetch"} onPress={goForFetch} color="green" />
       {/* {
         <FlatList
           data={dataSource}
@@ -93,8 +91,8 @@ export default Retrieve = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     // flex: 1,
-    backgroundColor: '#F45678',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#F45678",
+    alignItems: "center",
+    justifyContent: "center",
   },
 });
