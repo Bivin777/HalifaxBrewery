@@ -1,11 +1,11 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import DropDownPicker from 'react-native-dropdown-picker';
-import { province } from '../geo/province.js';
-import { Text } from '@rneui/themed';
-import AwesomeAlert from 'react-native-awesome-alerts';
-import AntDesign from 'react-native-vector-icons/AntDesign';
-import { Dropdown } from 'react-native-element-dropdown';
+import { StatusBar } from "expo-status-bar";
+import React, { useState, useEffect } from "react";
+import DropDownPicker from "react-native-dropdown-picker";
+import { province } from "../geo/province.js";
+import { Text } from "@rneui/themed";
+import AwesomeAlert from "react-native-awesome-alerts";
+import AntDesign from "react-native-vector-icons/AntDesign";
+import { Dropdown } from "react-native-element-dropdown";
 import {
   StyleSheet,
   // Text,
@@ -17,18 +17,18 @@ import {
   FlatList,
   ActivityIndicator,
   SafeAreaView,
-} from 'react-native';
+} from "react-native";
 export default Add = ({ navigation }) => {
   // const [products, setproducts] = useState([]);
   // const [isLoading, setIsLoading] = useState(true);
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
   const [items, setItems] = useState(province);
-  const [region, onChangeRegion] = React.useState('');
-  const [store, onChangeStore] = React.useState('');
-  const [brand, onChangeBrand] = React.useState('');
-  const [product, onChangeProduct] = React.useState('');
-  const [facings, onChangeFacings] = React.useState('');
+  const [region, onChangeRegion] = React.useState("");
+  const [store, onChangeStore] = React.useState("");
+  const [brand, onChangeBrand] = React.useState("");
+  const [product, onChangeProduct] = React.useState("");
+  const [facings, onChangeFacings] = React.useState("");
   const [alert, setAlert] = React.useState(false);
 
   const [Focus, setFocus] = useState(false);
@@ -43,11 +43,11 @@ export default Add = ({ navigation }) => {
   };
 
   const goForFetch = () => {
-    fetch('https://atlanticbreweries.herokuapp.com/update-data', {
-      method: 'PUT',
+    fetch("https://atlanticbreweries.herokuapp.com/update-data", {
+      method: "PUT",
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
+        Accept: "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         province: value, //value
@@ -75,19 +75,19 @@ export default Add = ({ navigation }) => {
         <AwesomeAlert
           show={alert}
           titleStyle={{
-            color: 'blue',
+            color: "blue",
             fontSize: 20,
           }}
           showProgress={false}
-          title='Hey!'
-          message='Product Facings Updated Successfully!'
+          title="Hey!"
+          message="Product Facings Updated Successfully!"
           closeOnTouchOutside={true}
           closeOnHardwareBackPress={true}
           showCancelButton={false}
           showConfirmButton={true}
-          cancelText='Cancel'
-          confirmText='Confirm'
-          confirmButtonColor='green'
+          cancelText="Cancel"
+          confirmText="Confirm"
+          confirmButtonColor="green"
           onCancelPressed={() => {
             hideAlert();
           }}
@@ -96,30 +96,30 @@ export default Add = ({ navigation }) => {
           }}
         />
       </View>
-      <View style={{ alignItems: 'center' }}>
+      <View style={{ alignItems: "center" }}>
         <Image
           source={{
-            uri: 'http://www.sd43.bc.ca/school/gleneagle/StaffInfo/Dept%20Icons/all-icons/add_to_shopping_cart.png',
+            uri: "http://www.sd43.bc.ca/school/gleneagle/StaffInfo/Dept%20Icons/all-icons/add_to_shopping_cart.png",
           }}
           style={{ width: 100, height: 100 }}
         />
-        <Text> {'\n'}</Text>
+        <Text> {"\n"}</Text>
       </View>
 
       <SafeAreaView>
         <Dropdown
           data={items}
-          style={[styles.dropdown, Focus && { borderColor: 'blue' }]}
+          style={[styles.dropdown, Focus && { borderColor: "blue" }]}
           placeholderStyle={styles.placeholderStyle}
           selectedTextStyle={styles.selectedTextStyle}
           inputSearchStyle={styles.inputSearchStyle}
           iconStyle={styles.iconStyle}
           search
           maxHeight={300}
-          labelField='label'
-          valueField='value'
-          placeholder={!Focus ? 'Select Province' : '...'}
-          searchPlaceholder='Search...'
+          labelField="label"
+          valueField="value"
+          placeholder={!Focus ? "Select Province" : "..."}
+          searchPlaceholder="Search..."
           value={value}
           onFocus={() => setFocus(true)}
           onBlur={() => setFocus(false)}
@@ -130,19 +130,19 @@ export default Add = ({ navigation }) => {
           renderLeftIcon={() => (
             <AntDesign
               style={styles.icon}
-              color={Focus ? 'blue' : 'black'}
-              name='Safety'
+              color={Focus ? "blue" : "black"}
+              name="Safety"
               size={20}
             />
           )}
         />
       </SafeAreaView>
 
-      <StatusBar style='auto' />
+      <StatusBar style="auto" />
 
-      <Text> {'\n'}</Text>
+      <Text> {"\n"}</Text>
 
-      <Text> {'\n'}</Text>
+      <Text> {"\n"}</Text>
       <Text h3>Region</Text>
       <TextInput
         style={styles.input}
@@ -174,12 +174,17 @@ export default Add = ({ navigation }) => {
         value={facings}
       />
       <Button
-        title={'Update Quantity'}
+        title={"Update Quantity"}
         onPress={goForFetch}
-        color='#228822d6'
-        fontWeight='bold'
+        color="#228822d6"
+        fontWeight="bold"
       />
-      <Text> {'\n'}</Text>
+      <Button
+        title={"<Back"}
+        onPress={() => navigation.navigate("home")}
+        color="#007AFF"
+      />
+      <Text> {"\n"}</Text>
 
       {/* <Button
         title='Go to Retrieve Page'
@@ -192,13 +197,13 @@ export default Add = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    backgroundColor: '#F45678',
-    alignItems: 'center',
-    justifyContent: 'center',
+    flexDirection: "row",
+    backgroundColor: "#F45678",
+    alignItems: "center",
+    justifyContent: "center",
   },
-  flexDirection: 'row',
-  flexWrap: 'wrap',
+  flexDirection: "row",
+  flexWrap: "wrap",
   input: {
     height: 40,
     margin: 12,
@@ -207,11 +212,11 @@ const styles = StyleSheet.create({
   },
   dropdown: {
     height: 50,
-    borderColor: 'gray',
+    borderColor: "gray",
     borderWidth: 0.5,
     borderRadius: 8,
     paddingHorizontal: 8,
-    backgroundColor: 'white',
+    backgroundColor: "white",
   },
   placeholderStyle: {
     fontSize: 16,
@@ -234,13 +239,13 @@ const styles = StyleSheet.create({
     fontSize: 17,
   },
   success: {
-    textAlign: 'center',
+    textAlign: "center",
     marginBottom: 10,
     padding: 10,
-    color: 'white',
+    color: "white",
     borderRadius: 10,
   },
   bgSuccess: {
-    backgroundColor: '#228822d6',
+    backgroundColor: "#228822d6",
   },
 });

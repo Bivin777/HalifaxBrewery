@@ -20,6 +20,7 @@ export default function App() {
         <Stack.Screen name="add" component={Add} />
         <Stack.Screen name="update" component={Update} />
         <Stack.Screen name="retrieve" component={Retrieve} />
+        
       </Stack.Navigator>
     </NavigationContainer>
     // <Container/>

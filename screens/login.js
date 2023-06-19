@@ -115,6 +115,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 4,
     color: "white",
+    backgroundColor: "black",
   },
   passwordContainer: {
     flexDirection: "row",
@@ -128,6 +129,7 @@ const styles = StyleSheet.create({
     borderColor: "white",
     borderRadius: 4,
     color: "white",
+    backgroundColor: "black",
   },
   showPasswordButton: {
     paddingHorizontal: 8,
