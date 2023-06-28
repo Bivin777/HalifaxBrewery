@@ -1,3 +1,4 @@
+import { BottomSheet } from "@rneui/base";
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
 
@@ -47,6 +48,8 @@ export default Home = ({ navigation }) => {
       )}
 
       <Text style={styles.welcomeText}>Welcome to your App, Justin!</Text>
+
+      <Text style={styles.versionText}>Version 1.0</Text>
     </View>
   );
 };
@@ -88,5 +91,10 @@ const styles = StyleSheet.create({
   welcomeText: {
     fontSize: 24,
     fontWeight: "bold",
+  },
+  versionText: {
+    fontSize: 10,
+    position: "absolute",
+    bottom: 20,
   },
 });
