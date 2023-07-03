@@ -1,9 +1,11 @@
 import { BottomSheet } from "@rneui/base";
 import React, { useState } from "react";
 import { View, Text, TouchableOpacity, StyleSheet, Image } from "react-native";
+import Icon from "react-native-vector-icons/Ionicons";
 
 export default Home = ({ navigation }) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [selectedTab, setSelectedTab] = useState("Home");
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -11,45 +13,48 @@ export default Home = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={toggleMenu} style={styles.hamburgerContainer}>
-        <Image
-          source={require("./hamburger_icon.png")}
-          style={styles.hamburgerIcon}
-        />
-      </TouchableOpacity>
-
-      {menuOpen && (
-        <View style={styles.menuContainer}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("add")}
-            style={styles.menuItem}
-          >
-            <Text style={styles.menuText}>Add Record</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("update")}
-            style={styles.menuItem}
-          >
-            <Text style={styles.menuText}>Update Record</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("retrieve")}
-            style={styles.menuItem}
-          >
-            <Text style={styles.menuText}>View Record</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("login")}
-            style={styles.menuItem}
-          >
-            <Text style={styles.menuText}>Logout</Text>
-          </TouchableOpacity>
-        </View>
-      )}
-
-      <Text style={styles.welcomeText}>Welcome to your App, Justin!</Text>
-
-      <Text style={styles.versionText}>Version 1.0</Text>
+      <View style={styles.content}>
+        {/* Render content based on the selected tab */}
+        {selectedTab === "Home" && (
+          <Text>The last record update was done on: </Text>
+        )}
+        {selectedTab === "Add" && <Text>Add Screen Content</Text>}
+        {selectedTab === "Settings" && <Text>Settings Screen Content</Text>}
+      </View>
+      <View style={styles.bottomNavBar}>
+        <TouchableOpacity
+          style={[styles.tab, selectedTab === "Home" && styles.selectedTab]}
+          onPress={() => navigation.navigate("home")}
+        >
+          <Icon name="home-outline" size={24} color="black" />
+          {/* <Text style={styles.tabText}>Home</Text> */}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tab, selectedTab === "retrieve" && styles.selectedTab]}
+          onPress={() => navigation.navigate("retrieve")}
+        >
+          <Icon name="search-outline" size={24} color="black" />
+          {/* <Text style={styles.tabText}>View</Text> */}
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tab, selectedTab === "Update" && styles.selectedTab]}
+          onPress={() => navigation.navigate("update")}
+        >
+          <Icon name="refresh-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tab, selectedTab === "Add" && styles.selectedTab]}
+          onPress={() => navigation.navigate("add")}
+        >
+          <Icon name="add-outline" size={24} color="black" />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.tab, selectedTab === "Logout" && styles.selectedTab]}
+          onPress={() => navigation.navigate("login")}
+        >
+          <Icon name="exit-outline" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -61,40 +66,30 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: "grey",
   },
-  hamburgerContainer: {
-    position: "absolute",
-    top: 26,
-    left: 6,
-    zIndex: 1,
+  content: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
   },
-  hamburgerIcon: {
-    width: 36,
-    height: 36,
-    resizeMode: "contain",
+  bottomNavBar: {
+    flexDirection: "row",
+    backgroundColor: "#f0f0f0",
+    borderTopWidth: 1,
+    borderColor: "#ccc",
+    paddingHorizontal: 16,
+    paddingVertical: 4,
   },
-  menuContainer: {
-    position: "absolute",
-    top: 70,
-    left: 45,
-    backgroundColor: "#fff",
-    borderRadius: 4,
-    padding: 8,
-    elevation: 2,
-  },
-  menuItem: {
+  tab: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
     paddingVertical: 8,
-    paddingHorizontal: 10,
   },
-  menuText: {
-    fontSize: 18,
+  selectedTab: {
+    borderBottomWidth: 2,
+    borderColor: "blue",
   },
-  welcomeText: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  versionText: {
-    fontSize: 10,
-    position: "absolute",
-    bottom: 20,
+  tabText: {
+    fontSize: 16,
   },
 });
