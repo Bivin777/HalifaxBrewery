@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image, StyleSheet } from "react-native";
+import { View, Image, StyleSheet, Text } from "react-native";
 
 const SplashScreen = () => {
   return (
@@ -9,6 +9,8 @@ const SplashScreen = () => {
         style={styles.image}
         resizeMode="contain"
       />
+      <Text style={styles.title}>Booze Tracker</Text>
+      <Text style={styles.version}>Version 1.0</Text>
     </View>
   );
 };
@@ -21,7 +23,19 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   image: {
-    width: "80%", // Adjust the size of the image as per your preference
+    width: "80%",
+  },
+  title: {
+    fontSize: 26,
+    fontWeight: "bold",
+    color: "gold",
+    alignItems: "center",
+    marginBottom: 20,
+  },
+  version: {
+    fontSize: 14,
+    color: "gold",
+    marginBottom: 100,
   },
 });
 
